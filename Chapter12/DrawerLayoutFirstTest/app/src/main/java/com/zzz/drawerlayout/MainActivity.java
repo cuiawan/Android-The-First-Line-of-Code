@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     
@@ -46,12 +47,27 @@ public class MainActivity extends AppCompatActivity {
             //实际上，Toolbar最左侧的按钮就叫HomeAsUp
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
-
+        //悬浮按钮
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"FAB Clicked",Toast.LENGTH_SHORT).show();
+                //普通的Toast方式
+                //Toast.makeText(MainActivity.this,"FAB Clicked",Toast.LENGTH_SHORT).show();
+
+                //Snackbar方式
+                //第一个参数View，只要是当前界面布局的任意一个View就行，SnackBar会使用这个View来自动查找最外层的布局
+                //第二个参数是Snackbar要显示的内容
+                //第三个参数是Snackbar显示的时长
+                Snackbar.make(v,"data delete",Snackbar.LENGTH_SHORT)
+                        .setAction("Undo", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(MainActivity.this,"data restored",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .show();
             }
         });
     }
