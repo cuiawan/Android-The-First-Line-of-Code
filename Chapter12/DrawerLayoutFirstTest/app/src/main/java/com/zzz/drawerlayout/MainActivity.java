@@ -3,6 +3,7 @@ package com.zzz.drawerlayout;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +11,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
-
+    
     private DrawerLayout mDrawerLayout;
 
     @Override
@@ -45,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
             //实际上，Toolbar最左侧的按钮就叫HomeAsUp
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"FAB Clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
