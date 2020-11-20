@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -13,14 +15,16 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
 
     private List<Fruit> mFruitList;
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        View fruitView;
         ImageView fruitImage;
         TextView fruitName;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            fruitImage = (ImageView)itemView.findViewById(R.id.fruit_image);
-            fruitName = (TextView)itemView.findViewById(R.id.fruit_name);
+            fruitView = itemView;
+            fruitImage = (ImageView) itemView.findViewById(R.id.fruit_image);
+            fruitName = (TextView) itemView.findViewById(R.id.fruit_name);
         }
     }
 
@@ -32,7 +36,29 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        final ViewHolder viewHolder = new ViewHolder(view);
+
+        viewHolder.fruitView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = viewHolder.getAdapterPosition();
+//                int position = viewHolder.getBindingAdapterPosition();
+//                int position = viewHolder.getAbsoluteAdapterPosition();
+                Fruit fruit = mFruitList.get(position);
+                Toast.makeText(v.getContext(), "you click view " + fruit.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        viewHolder.fruitImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int position = viewHolder.getAdapterPosition();
+//                int position = viewHolder.getBindingAdapterPosition();
+//                int position = viewHolder.getAbsoluteAdapterPosition();
+                Fruit fruit = mFruitList.get(position);
+                Toast.makeText(v.getContext(), "you click image " + fruit.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
         return viewHolder;
     }
 
