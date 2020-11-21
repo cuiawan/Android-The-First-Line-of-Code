@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/news_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxLines="1"
+    android:ellipsize="end"
+    android:textSize="18sp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    />
+<!--
+padding : 表示给控件周围加上空白
+maxLines = 1 表示TextView只能单行显示
+ellipsize : 用于设定当文本内容超出控件宽度时，文本的缩略方式，
+            end表示在尾部进行缩略
+-->
