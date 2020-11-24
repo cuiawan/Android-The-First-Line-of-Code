@@ -23,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: ");
                 Intent intent = new Intent("com.zzz.mybroadcastreceiver.MY_BROADCAST");
-                intent.setComponent(new ComponentName("com.zzz.mybroadcastreceiver","com.zzz.mybroadcastreceiver.MyBroadcastReceiver"));
+
+                //在高版本中需要把把其中一行代码加上
+//                intent.setComponent(new ComponentName("com.zzz.mybroadcastreceiver","com.zzz.mybroadcastreceiver.MyBroadcastReceiver"));
+//                intent.setPackage("com.zzz.mybroadcastreceiver2");
                 sendBroadcast(intent);
             }
         });
