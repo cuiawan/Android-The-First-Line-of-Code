@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 //在高版本中需要把把其中一行代码加上
 //                intent.setComponent(new ComponentName("com.zzz.mybroadcastreceiver","com.zzz.mybroadcastreceiver.MyBroadcastReceiver"));
 //                intent.setPackage("com.zzz.mybroadcastreceiver2");
-                sendBroadcast(intent);
+                sendOrderedBroadcast(intent,null);
             }
         });
     }
