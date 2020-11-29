@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +28,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button restoreData = (Button) findViewById(R.id.restore_data);
+        restoreData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+                String name = sharedPreferences.getString("name", "");
+                int age = sharedPreferences.getInt("age", 0);
+                boolean married = sharedPreferences.getBoolean("married", false);
+                Log.d(TAG, "onClick: name is "+name);
+                Log.d(TAG, "onClick: age is "+age);
+                Log.d(TAG, "onClick: married is "+married);
+            }
+        });
     }
 }
